@@ -1,0 +1,9 @@
+# Create btrfs subvolume
+#
+# vars:
+#   subvolume_path: /full/path
+
+- name: 'create subvolume "{{ subvolume_path }}"'
+  ansible.builtin.command: 'btrfs subvolume create {{ subvolume_path }}'
+  args:
+    creates: '{{ subvolume_path }}'

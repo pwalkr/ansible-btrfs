@@ -1,0 +1,12 @@
+# For simplified operation, define a common "btrfs_root" variable, and then you
+# can manage subvolumes and snapshots with just a relative-path subvolume_name
+#
+# vars:
+#   btrfs_root: /data
+#   subvolume_rpath: sub/dir
+
+subvolume_path: '{{ btrfs_root }}/{{ subvolume_rpath }}'
+
+snapshot_root: '{{ btrfs_root }}/.snapshots'
+
+snapshot_dest: '{{ snapshot_root }}/{{ subvolume_rpath | default(subvolume_path) | basename }}'

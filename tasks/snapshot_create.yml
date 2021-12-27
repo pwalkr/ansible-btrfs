@@ -1,0 +1,10 @@
+# Create btrfs subvolume
+#
+# vars:
+#   snapshot_path: /full/path/to/source  # must be a subvolume
+#   snapshot_dest: /full/path/to/dest      # must be within btrfs filesystem
+
+- name: snapshot "{{ subvolume_path }}" -> "{{ snapshot_dest }}"
+  ansible.builtin.command: 'btrfs subvolume snapshot -r {{ subvolume_path }} {{ snapshot_dest }}'
+  args:
+    creates: '{{ snapshot_dest }}'

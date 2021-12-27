@@ -1,0 +1,10 @@
+# Delete btrfs snapshot
+#
+# vars:
+#   snapshot_path: /full/path/to/source  # must be a subvolume
+#   snapshot_dest: /full/path/to/dest      # must be within btrfs filesystem
+
+- name: delete "{{ snapshot_dest }}"
+  ansible.builtin.command: 'btrfs subvolume delete {{ snapshot_dest }}'
+  args:
+    removes: '{{ snapshot_dest }}'

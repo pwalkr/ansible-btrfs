@@ -1,0 +1,8 @@
+# Create snapshots directory
+#
+# Most useful when using btrfs_root and default snapshot destinations
+
+- name: create snapshots directory "{{ snapshot_root }}"
+  ansible.builtin.file:
+    path: '{{ snapshot_root }}'
+    state: directory
